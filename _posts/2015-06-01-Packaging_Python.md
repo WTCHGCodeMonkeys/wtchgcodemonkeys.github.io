@@ -10,7 +10,7 @@ deploy applications in a cross-platform way. This post demonstrates
 how we can package up a Python application using the current
 best-practices.
 
-To illustrate this, I've made a simple Python package called *kingman*, which
+To illustrate this, I've made a simple Python package called ``kingman``, which
 simulates the classical single-locus [Kingman's
 Coalescent](http://en.wikipedia.org/wiki/Coalescent_theory).  The simulation
 itself is pretty trivial, and something that anyone could reproduce themselves
@@ -23,6 +23,33 @@ available on [PyPI](https://pypi.python.org/pypi/kingman) and
 This tutorial is based on current best practises as given in the [Python
 Packaging User
 Guide](http://python-packaging-user-guide.readthedocs.org/en/latest/).
+See also the [example package](https://github.com/pypa/sampleproject)
+from the Python Packaging authority.
+This package is based on my own experience, and may not fully conform
+to what others may think. Please file an issue on github, or send a 
+pull request if you see a problem!
+
+## Python versions
+
+Python 3 is here to stay, and we should aim to support it fully in any 
+module that we release. Supporting both Python 2.7 and Python 3.x 
+is actually quite straightforward in the majority of cases, once 
+we follow a few simple rules. For the more complex cases, the 
+[six module](https://pypi.python.org/pypi/six) provides a very useful
+compatability layer.
+
+In the ``kingman`` module, every file starts with the lines
+```python
+from __future__ import print_function
+from __future__ import division
+```
+
+Including these two lines will ensure that the vast majority of the 
+code you write is compatible with both Python 2.7 and 3.x.  We also 
+ensure a good level of compatibility by included several Python 
+version in our Travis Continuous integration tests (see below).
+See [here](http://python-future.org/compatible_idioms.html)
+further information on issues regarding Python version compatibility.
 
 ## Code Layout
 
@@ -41,4 +68,31 @@ following:
 1. Enable [Travis integration with GitHub](http://docs.travis-ci.com/user/getting-started/);
 2. Create the ``.travis.yml`` file;
 3. Push an update to GitHub.
+
+## Code linting
+
+To ensure that our code follows the 
+[PEP 8 style guide](https://www.python.org/dev/peps/pep-0008)
+and to catch many common programming mistakes, we use the 
+[Flake8 tool](https://pypi.python.org/pypi/flake8). We ensure this 
+is run every time we push code to GitHub by running it in our 
+``.travis.yml`` file.
+
+## Test Coverage
+
+To ensure we maintain good test coverage, we use the nose 
+[coverage plugin](http://nose.readthedocs.org/en/latest/plugins/cover.html). 
+We enable this in the ``.travis.yml`` file and set a minimum coverage 
+threshold of 95%. If our test coverage falls below this, the Travis run will
+fail.
+
+## Command line interface development and deployment.
+
+A very common task in Bioinformatics is to develop a standalone program 
+with a command line interface which performs some well defined task. Python 
+provides some excellent tools to make developing and deploying CLIs very
+simple. To write our CLI, we use the 
+[argparse module](https://docs.python.org/3.4/library/argparse.html) from 
+the Python standard library. This replaces the old ``optparse`` module, 
+which should not be used in new code.
 
