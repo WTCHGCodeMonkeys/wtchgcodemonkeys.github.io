@@ -83,7 +83,7 @@ is run every time we push code to GitHub by running it in our
 To ensure we maintain good test coverage, we use the nose 
 [coverage plugin](http://nose.readthedocs.org/en/latest/plugins/cover.html). 
 We enable this in the ``.travis.yml`` file and set a minimum coverage 
-threshold of 95%. If our test coverage falls below this, the Travis run will
+threshold of 85%%. If our test coverage falls below this, the Travis run will
 fail.
 
 ## Command line interface development and deployment.
