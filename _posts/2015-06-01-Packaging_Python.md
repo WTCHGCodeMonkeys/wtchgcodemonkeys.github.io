@@ -1,10 +1,7 @@
 ---
 layout: post
 title: Python Packaging
-author: Jerome Kelleher
 ---
-
-# Python Packaging
 
 Packaging applications properly is one of the most important ways
 in which we can improve user experience, and indeed make our own lives
