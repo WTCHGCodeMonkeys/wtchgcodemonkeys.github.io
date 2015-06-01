@@ -77,6 +77,10 @@ we have the following files:
 - **setup.py** The main setup configuration file. See below for discussion.
 - **ez_setup.py** A file that we copy in to the source distribution so we 
   can bootstrap ``setuptools``, if we need to.
+- **cli_dev.py** This is a simple shim to allow us work with the command 
+  line application more easily during development, so we can call
+  ``python cli_dev.py`` from the shell to run the application during 
+  development.
 
 ## The setup.py file
 
