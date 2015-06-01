@@ -54,7 +54,14 @@ further information on issues regarding Python version compatibility.
 ## Code Layout
 
 In our [git repository](https://github.com/jeromekelleher/kingman), 
-we have the following layout:
+we have the following files:
+
+kingman
+: The directory holding the code for the ``kingman`` package.
+
+tests
+: The directory containing the unit tests.
+
 
 
 ## Continuous Integration Testing.
@@ -133,7 +140,7 @@ $ sphinx-quickstart
 from within the ``docs`` directory, taking the default for the majority of the 
 options.
 
-We then add two new [reStructured Text](http://docutils.sourceforge.net/rst.html)
+We then add two new [reStructuredText](http://docutils.sourceforge.net/rst.html)
 files to the docs directory, ``api.rst`` and ``cli.rst``, which hold the documentation
 for the Python API and the command line interface, respectively. For the API
 documentation, we use the [Sphinx autodoc](http://sphinx-doc.org/ext/autodoc.html)
@@ -142,4 +149,11 @@ source code.
 
 ### ReadTheDocs
 
+Read The Docs allows us to automatically publish the Sphinx generated documentation
+to the web. It tracks changes from GitHub, so that our documentation is always 
+up to date. See the 
+[tutorial](https://docs.readthedocs.org/en/latest/getting_started.html) to 
+get started with Read The Docs. After importing the ``kingman`` project from 
+GitHub, we then have automatically updated 
+[documentation](http://kingman.readthedocs.org/en/latest/index.html).
 
