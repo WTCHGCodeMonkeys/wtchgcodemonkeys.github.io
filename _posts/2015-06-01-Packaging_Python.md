@@ -56,15 +56,32 @@ further information on issues regarding Python version compatibility.
 In our [git repository](https://github.com/jeromekelleher/kingman), 
 we have the following files:
 
-kingman
-: The directory holding the code for the ``kingman`` package.
-
-tests
-: The directory containing the unit tests.
+- **kingman:** The directory holding the code for the ``kingman`` package.
+- **tests:** The directory containing the unit tests.
 
 
+## Unit tests
 
-## Continuous Integration Testing.
+[Unit testing](http://en.wikipedia.org/wiki/Unit_testing) is an essential
+part of developing reliable software. We use the 
+[nose](https://nose.readthedocs.org/en/latest/) testing framework for Python.
+If you follow some simple naming rules for your test cases, nose can 
+autodiscover and run them for you. For example, we can run:
+{% highlight bash %}
+$ nosetests -v
+test_random_seed (test_cli.TestInput) ... ok
+test_sample_size (test_cli.TestInput) ... ok
+test_sample_size (test_cli.TestOutput) ... ok
+test_bad_sample_size (test_simulate.TestInput) ... ok
+test_random_seed (test_simulate.TestOutput) ... ok
+test_sample_size (test_simulate.TestOutput) ... ok
+
+----------------------------------------------------------------------
+Ran 6 tests in 0.016s
+{% endhighlight %}
+
+
+## Continuous Integration Testing
 [Continuous integration testing](http://en.wikipedia.org/wiki/Continuous_integration)
 is one of the most effective ways of ensuring that your package is always in a 
 useful state. Using [Travis CI](https://travis-ci.org/) we can test our code 
