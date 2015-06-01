@@ -56,8 +56,24 @@ further information on issues regarding Python version compatibility.
 In our [git repository](https://github.com/jeromekelleher/kingman), 
 we have the following files:
 
-- **kingman:** The directory holding the code for the ``kingman`` package.
-- **tests:** The directory containing the unit tests.
+- **kingman** The directory holding the code for the ``kingman`` package.
+- **tests** The directory containing the unit tests.
+- **docs** The directory containing the Sphinx documentation.
+- **README.txt** The README file for the project, written in reStructuredText 
+  format. The reason for using reStructuredText is so we can have nicely 
+  formatted information on both GitHub and PyPI generated directly from the  
+  same README.
+- **README.rst** A soft link to the README.txt file above for convenience.
+- **LICENSE** The file setting out the terms under which the software is shared.
+  Should be an [OSI approved](http://opensource.org/licenses) open source 
+  license.
+- **MANIFEST.in** A file describing the extra files to include in the source
+  distribution. See 
+  [here](https://docs.python.org/3.4/distutils/sourcedist.html#manifest-template)
+  for more details.
+- **requirements.txt** A file describing the packages dependencies. See below 
+  for further details.
+- **setup.py** The main setup configuration file.
 
 
 ## Unit tests
