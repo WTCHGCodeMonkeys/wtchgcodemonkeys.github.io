@@ -61,8 +61,7 @@ we have the following files:
 - **docs** The directory containing the Sphinx documentation.
 - **README.txt** The README file for the project, written in reStructuredText 
   format. The reason for using reStructuredText is so we can have nicely 
-  formatted information on both GitHub and PyPI generated directly from the  
-  same README.
+  formatted information on both GitHub and PyPI generated directly from the same README.
 - **README.rst** A soft link to the README.txt file above for convenience.
 - **LICENSE** The file setting out the terms under which the software is shared.
   Should be an [OSI approved](http://opensource.org/licenses) open source 
@@ -73,8 +72,39 @@ we have the following files:
   for more details.
 - **requirements.txt** A file describing the packages dependencies. See below 
   for further details.
-- **setup.py** The main setup configuration file.
+- **setup.py** The main setup configuration file. See below for discussion.
+- **ez_setup.py** A file that we copy in to the source distribution so we 
+  can bootstrap ``setuptools``, if we need to.
 
+## The setup.py file
+
+The ``setup.py`` file is the most important file in defining our package.
+Following the 
+[advice](http://python-packaging-user-guide.readthedocs.org/en/latest/projects.html#setuptools)
+of the Python Packaging Authority, we use 
+[setuptools](http://pythonhosted.org/setuptools/) to create 
+the distribution. This complicates things a little, as some users may
+not have setuptools installed. To work around this, we first attempt to import 
+setuptools, and if it doesn't exist fall back on bootstrapping setuptools
+using [ez_setup.py](https://pypi.python.org/pypi/ez_setup). This seems to work
+well enough in practice.
+
+## Requirements
+
+One of the most useful aspects of using [pip](https://pypi.python.org/pypi/pip)
+to install packages is the automatic installation of dependencies. To enable 
+this we need to tell pip what packages we depend on. There are two distict
+scenarious in which we need to be explicit about our dependencies, which 
+are handled in different ways:
+
+1. In testing and development, we need to list all the packages we require when
+   we want to run our unit tests (e.g. on Travis). This is done using the 
+   [requirements.txt file](https://pip.readthedocs.org/en/1.1/requirements.html).
+2. When installing the package on a users machine, we need to tell the installer
+   what extra packages we depend on for normal use. This is done in ``setup.py``
+   using the **install_requires** argument. See the 
+   [setuptools documentation](https://pythonhosted.org/setuptools/setuptools.html)
+   for more details.
 
 ## Unit tests
 
