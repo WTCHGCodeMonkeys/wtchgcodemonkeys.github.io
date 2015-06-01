@@ -39,16 +39,16 @@ we follow a few simple rules. For the more complex cases, the
 compatability layer.
 
 In the ``kingman`` module, every file starts with the lines
-```python
+{% highlight python }
 from __future__ import print_function
 from __future__ import division
-```
+{% endhighlight }
 
 Including these two lines will ensure that the vast majority of the 
 code you write is compatible with both Python 2.7 and 3.x.  We also 
 ensure a good level of compatibility by included several Python 
-version in our Travis Continuous integration tests (see below).
-See [here](http://python-future.org/compatible_idioms.html)
+versions in our Travis Continuous integration tests (see below).
+See [here](http://python-future.org/compatible_idioms.html) for 
 further information on issues regarding Python version compatibility.
 
 ## Code Layout
@@ -58,9 +58,9 @@ we have the following layout:
 
 
 ## Continuous Integration Testing.
-(Continuous integration testing)[http://en.wikipedia.org/wiki/Continuous_integration]
+[Continuous integration testing](http://en.wikipedia.org/wiki/Continuous_integration)
 is one of the most effective ways of ensuring that your package is always in a 
-useful state. Using (Travis CI)[https://travis-ci.org/] we can test our code 
+useful state. Using [Travis CI](https://travis-ci.org/) we can test our code 
 after every push to git, which means many bugs are caught earlier than they 
 might otherwise be. To use Travis in the ``kingman`` package, we do the 
 following:
@@ -96,3 +96,15 @@ simple. To write our CLI, we use the
 the Python standard library. This replaces the old ``optparse`` module, 
 which should not be used in new code.
 
+
+## Uploading to PyPI
+
+Uploading our package to the [Python Package index](https://pypi.python.org/pypi)
+makes it available for anyone to install easily. After creating a PyPI account
+and setting up the credentials, this is very simple to do:
+{% highlight bash }
+$ python setup.py sdist
+$ twine upload kingman-{VERSION}.tar.gz
+{% endhighlight }
+We use the [Twine](https://pypi.python.org/pypi/twine) package to securely upload
+the package.
