@@ -14,20 +14,22 @@ To illustrate this, I've made a simple Python package called ``kingman``, which
 simulates the classical single-locus [Kingman's
 Coalescent](http://en.wikipedia.org/wiki/Coalescent_theory).  The simulation
 itself is pretty trivial, and something that anyone could reproduce themselves
-in minutes. I think it's a good idea to have an example which actually does
-something useful to avoid the [drawing an
-owl](http://knowyourmeme.com/memes/how-to-draw-an-owl) problem.  The package is
+in minutes. The package is
 available on [PyPI](https://pypi.python.org/pypi/kingman) and
-[GitHub](https://github.com/jeromekelleher/kingman).
+[GitHub](https://github.com/jeromekelleher/kingman), and has 
+documentation at [ReadTheDocs](http://kingman.readthedocs.org/en/latest/).
 
 This tutorial is based on current best practises as given in the [Python
 Packaging User
 Guide](http://python-packaging-user-guide.readthedocs.org/en/latest/).
 See also the [example package](https://github.com/pypa/sampleproject)
-from the Python Packaging authority.
+from the Python Packaging authority for an alternative framework.
 This package is based on my own experience, and may not fully conform
-to what others may think. Please file an issue on github, or send a 
-pull request if you see a problem!
+to what others may think. Please file an 
+[issue](https://github.com/jeromekelleher/kingman/issues)
+on GitHub, or send a 
+[pull request](https://github.com/jeromekelleher/kingman/pulls)
+ if you see a problem!
 
 ## Python versions
 
@@ -153,7 +155,7 @@ is run every time we push code to GitHub by running it in our
 To ensure we maintain good test coverage, we use the nose 
 [coverage plugin](http://nose.readthedocs.org/en/latest/plugins/cover.html). 
 We enable this in the ``.travis.yml`` file and set a minimum coverage 
-threshold of 85%%. If our test coverage falls below this, the Travis run will
+threshold of 85%. If our test coverage falls below this, the Travis run will
 fail.
 
 ## Command line interface development and deployment.
