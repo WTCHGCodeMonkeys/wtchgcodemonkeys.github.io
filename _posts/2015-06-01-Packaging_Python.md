@@ -39,10 +39,10 @@ we follow a few simple rules. For the more complex cases, the
 compatability layer.
 
 In the ``kingman`` module, every file starts with the lines
-{% highlight python }
+{% highlight python %}
 from __future__ import print_function
 from __future__ import division
-{% endhighlight }
+{% endhighlight %}
 
 Including these two lines will ensure that the vast majority of the 
 code you write is compatible with both Python 2.7 and 3.x.  We also 
@@ -101,10 +101,45 @@ which should not be used in new code.
 
 Uploading our package to the [Python Package index](https://pypi.python.org/pypi)
 makes it available for anyone to install easily. After creating a PyPI account
-and setting up the credentials, this is very simple to do:
-{% highlight bash }
+and setting up the credentials, we first register our package:
+{% highlight bash %}
+$ python setup.py register
+{% endhighlight %}
+
+Once we have registered, we can then upload versions of the package as follows:
+{% highlight bash %}
 $ python setup.py sdist
 $ twine upload kingman-{VERSION}.tar.gz
-{% endhighlight }
+{% endhighlight %}
 We use the [Twine](https://pypi.python.org/pypi/twine) package to securely upload
 the package.
+
+## Documentation 
+
+A package is only as good as its documentation, and documentation needs to 
+look good to keep users engaged. [Sphinx](http://sphinx-doc.org/) and 
+[Read The Docs](https://readthedocs.org/) allow us to easily write 
+beautiful looking documentation that is automatically updated when we 
+push new updates to GitHub. 
+
+### Sphinx
+
+The documentation is built using [Sphinx](http://sphinx-doc.org/). See the 
+[sphinx tutorial](http://sphinx-doc.org/tutorial.html) for a quick introduction
+to using Sphinx. To get started, we simply run 
+{% highlight bash %}
+$ sphinx-quickstart
+{% endhighlight %}
+from within the ``docs`` directory, taking the default for the majority of the 
+options.
+
+We then add two new [reStructured Text](http://docutils.sourceforge.net/rst.html)
+files to the docs directory, ``api.rst`` and ``cli.rst``, which hold the documentation
+for the Python API and the command line interface, respectively. For the API
+documentation, we use the [Sphinx autodoc](http://sphinx-doc.org/ext/autodoc.html)
+extension. This allows us to import the API documentation directly from the 
+source code.
+
+### ReadTheDocs
+
+
