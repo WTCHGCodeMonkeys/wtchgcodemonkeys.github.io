@@ -132,6 +132,10 @@ test_sample_size (test_simulate.TestOutput) ... ok
 Ran 6 tests in 0.016s
 {% endhighlight %}
 
+One minor point to note is that nose will not run unit tests by 
+default in files that are 
+[marked executable](http://nose.readthedocs.org/en/latest/usage.html).
+
 
 ## Continuous Integration Testing
 [Continuous integration testing](http://en.wikipedia.org/wiki/Continuous_integration)
